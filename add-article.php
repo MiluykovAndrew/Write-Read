@@ -16,12 +16,12 @@
             <h1 class="title1">Добавление статьи</h1>
             <div class = "flex">
                 <form class="form" action="add-article.php" method="POST" enctype="multipart/form-data" style="margin-top:0">
-                    <input type="text" name="title" id="title" placeholder="Введите заголовок" class="input" required>
-                    <input type="text" name="intro" id="intro" placeholder="Введите описание" class="input" required>
-                    <textarea name="text" id="text" placeholder="Введите текст" class="input" required></textarea>
+                    <input type="text" name="title" id="title" placeholder="Заголовок" class="input" required>
+                    <input type="text" name="intro" id="intro" placeholder="Описание" class="input" required>
+                    <textarea name="text" id="text" placeholder="Основной текст" class="input" required></textarea>
                     <div class="file-upload-wrapper">
                         <input type="file" id="filename" name="filename" class="input-file">
-                        <label for="filename" class="label-file">Выбрать файл</label>
+                        <label for="filename" class="label-file">Выбрать картинку</label>
                         <span id="file-name" class="file-name">Файл не выбран</span>
                     </div>
                     <button class="add_button" type="submit" id="addBtn" name="publish">Опубликовать</button>

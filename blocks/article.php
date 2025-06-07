@@ -35,7 +35,6 @@
             <div class="like_count">
                 <?=$dislike_count;?>
             </div>
-
         </div>
     </div>
 </article>

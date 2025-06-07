@@ -26,7 +26,7 @@
     --second-color:#4c4cff;
     --button-color:#7137ff;
     --dark-color: #101019;
-    --third-color: #00a341;
+    --third-color: #00943b;
     --delete-color:#c8393e;
 }
 
@@ -159,8 +159,8 @@ a.link{
 
 a.write:hover,
 a.write:active {
-    background: var(--third-color);
-    color: #ffffff;
+    background-color: initial;
+    color: var(--third-color);
 }
 
 a.write{
@@ -170,11 +170,11 @@ a.write{
     cursor: pointer;
     text-decoration: none; /* Убираем подчеркивание */
 
-    background-color: initial;
+    background-color: var(--third-color);
     border: 1px solid var(--third-color);
     border-radius: 0.5rem;
 
-    color: var(--third-color);
+    color: #ffffff;
     cursor: pointer;
     font-family: Unbounded;
     font-size: 16px;
@@ -725,6 +725,13 @@ button{
 /* main {
     display: block;
 } */
+
+.title2 {
+    text-align: center!important;
+    font-size: 2rem;
+    padding-top: 2rem;
+    margin-bottom: 0.5rem;
+}
 
 .title1 {
     text-align: center!important;

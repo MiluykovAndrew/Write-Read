@@ -19,8 +19,8 @@ $user_id=$_COOKIE['log'];
     <nav class="nav">
         <?php if (empty($_COOKIE['log'])): ?>
             <a class="link" href="/">Главная</a>
-            <a class="link" href="/reg.php">Регистрация</a>
-            <a class="link" href="/auth.php">Вход</a>
+            <a class="link" href="/registration.php">Регистрация</a>
+            <a class="link" href="/authorization.php">Вход</a>
         <?php else: ?>
             <a class="write" href="/add-article.php">Писать</a>
             <a href="/author.php?author_id=<?=$user_id;?>" style="margin: 0 0.5rem;" class="author">

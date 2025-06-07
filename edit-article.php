@@ -25,12 +25,12 @@
             ?>
             <div class = "flex">
                 <form class="form" style="margin-top:0">
-                    <input type="text" name="title" id="title" placeholder="Введите заголовок" class="input" required value="<?=$res['title'];?>">
-                    <input type="text" name="intro" id="intro" placeholder="Введите интро" class="input" required value="<?=$res['intro'];?>">
-                    <textarea name="text" id="text" placeholder="Введите текст" class="input" required><?=$res['text'];?></textarea>
+                    <input type="text" name="title" id="title" placeholder="Заголовок" class="input" required value="<?=$res['title'];?>">
+                    <input type="text" name="intro" id="intro" placeholder="Описание" class="input" required value="<?=$res['intro'];?>">
+                    <textarea name="text" id="text" placeholder="Основной текст" class="input" required><?=$res['text'];?></textarea>
                     <div class="file-upload-wrapper">
                         <input type="file" id="filename" name="filename" class="input-file" required>
-                        <label for="filename" class="label-file">Выбрать файл</label>
+                        <label for="filename" class="label-file">Выбрать картинку</label>
                         <span id="file-name"><?php echo htmlspecialchars($res['filename']); ?></span> <!-- Выводим имя файла из базы данных -->
                     </div>
                     <button class="add_button" type="button" id="editBtn">Сохранить</button>

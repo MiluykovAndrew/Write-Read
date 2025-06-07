@@ -67,12 +67,10 @@
                             <em>Просмотры: <?=$res['views'] + 1;?></em><br>
                             <? if ($_COOKIE['log'] == $res['author']): ?>
                             <? endif; ?>
-                        </article>
-                            
+                        </article>                       
                         <article style="margin-bottom: 2rem;">
-                                Чтобы оставлять комментарии и добавлять в избранное, <a href="/auth.php" class="enter">авторизуйтесь</a>.
+                                Чтобы оставлять комментарии и добавлять в избранное, <a href="/authorization.php" class="enter">авторизуйтесь</a>.
                         </article>
-
                         <?php
                             $comment_id = $res['id'];
                             $comment_query = $connection -> query("SELECT comments.*, users.name as name FROM comments JOIN users ON comments.author_id = users.id WHERE article_id = '$comment_id' ORDER BY pubdate DESC");
@@ -81,8 +79,6 @@
                         <article class="comment_page">
                             <a href="/author.php?author_id=<?=$comment['author_id'];?>" class="author"><?=$comment['name'];?></a>
                             <p><?=$comment['text'];?></p>
-                
-
                             <div style="display: flex; justify-content: space-between;">
                                 <em>Дата публикации: <?=$comment['pubdate'];?></em>
                                 <? if ($_COOKIE['log'] == $comment['author_id']): ?>
@@ -90,31 +86,22 @@
                                 <? endif; ?>
                             </div>
                         </article>
-                        <?php
-                            endwhile;
-                        ?>
-                        
-                    <?php
-                        endwhile;
-                    ?>
+                        <?php endwhile;?>                      
+                    <?php endwhile;?>
                 </section>
             </main>
-
-        <? else: ?>
-            
+        <? else: ?>         
             <main id="main" class="main_index_in">
                 <? include_once "./blocks/aside.php" ?>
                 <section class="articles_main">
                     <?php
                         $id = intval($_GET['id']);                
-
                         $query = $connection -> query("SELECT articles.*, articles.id AS article_id, users.name FROM articles
                         JOIN users ON articles.author_id = users.id WHERE articles.id = '$id'");
                         $connection -> query("UPDATE `articles` SET `views` = `views` + 1 WHERE `id` = '$id'");
                         if (!$query) {
                             die("Ошибка в запросе: " . $connection->error);
                         }
-
                         while ($res = mysqli_fetch_assoc($query)):
                     ?>
                     <h1 class="title1">Страница статьи</h1>   
@@ -154,7 +141,7 @@
                                             if (mysqli_num_rows($connection->query("SELECT * FROM `reactions` WHERE `user_id` = '$user_id' 
                                             and `article_id` = '$id' and `like` = 1")) != 0):
                                         ?>
-                                        <form method="POST" action="/code/remove-like.php?id=&article_id=<?=$res['article_id'];?>" >
+                                        <form method="POST" action="/code/remove-reaction.php?id=&article_id=<?=$res['article_id'];?>" >
                                             <button class="add_favourites_button">
                                                 <img src="img/like-copy.png" class="img">
                                             </button>
@@ -165,8 +152,7 @@
                                                     <img src="img/like.png" class="img">
                                                 </button>
                                             </form>
-                                        <?php endif; ?>
-                                        
+                                        <?php endif; ?>                    
                                     </div>
                                         <div class="like_count" style="margin-right: 1rem;">
                                             <?=$like_count;?>
@@ -176,7 +162,7 @@
                                             if (mysqli_num_rows($connection->query("SELECT * FROM `reactions` WHERE `user_id` = '$user_id' 
                                             and `article_id` = '$id' and `dislike` = 1")) != 0):
                                         ?>
-                                        <form method="POST" action="/code/remove-dislike.php?id=&article_id=<?=$res['article_id'];?>" class="favourites">
+                                        <form method="POST" action="/code/remove-reaction.php?id=&article_id=<?=$res['article_id'];?>" class="favourites">
                                             <button class="add_favourites_button">
                                                 <img src="img/dislike-copy.png" class="img">
                                             </button>
@@ -194,7 +180,6 @@
                                     </div>
                                 </div>
                             </div>                
-
                             <div style="display: flex;flex-direction: column;align-items: flex-end; justify-content: flex-end;">
                                 <? if ($_COOKIE['log'] == $res['author_id']): ?>
                                     <button class="remove_button" onclick="location.href='/code/remove-article.php?id=<?=$res['id'];?>'"  >
@@ -229,12 +214,8 @@
                                     <? endif; ?>
                                 </div>
                             </article>
-                        <?php
-                            endwhile;
-                        ?>
-                    <?php
-                        endwhile;
-                    ?>
+                        <?php endwhile;?>
+                    <?php endwhile;?>
                 </section>
             </main>
         <? endif; ?>
